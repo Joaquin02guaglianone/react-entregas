@@ -20,7 +20,7 @@ if(!filtro) {
   resultados = productos
 } else {
  resultados = productos.filter ( (datos) => 
-datos.nombre.toLowerCase().includes(filtro.toLocaleLowerCase()))
+datos.categoria.toLowerCase().includes(filtro.toLocaleLowerCase()))
 
 }
 
@@ -45,7 +45,7 @@ datos.nombre.toLowerCase().includes(filtro.toLocaleLowerCase()))
   return (
     <div className="row">
 
-<input value={filtro} onChange={searcher} type="text" placeholder="buscar por nombre"/>
+<input value={filtro} onChange={searcher} type="text" placeholder="buscar por categoria"/>
 
       {resultados.map((prod) => {
         return (
