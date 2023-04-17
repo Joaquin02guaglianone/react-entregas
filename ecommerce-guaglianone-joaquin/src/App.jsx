@@ -14,8 +14,6 @@ function App() {
        <div>
         <Navb/>
        </div>
-
-       <div><ItemCount/></div>
        <div>
         <Contenedor/>
        </div>

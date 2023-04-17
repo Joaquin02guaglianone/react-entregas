@@ -24,10 +24,6 @@ datos.categoria.toLowerCase().includes(filtro.toLocaleLowerCase()))
 
 }
 
-
-
-
-
   useEffect(() => {
     let url = "https://pokeapi.co/api/v2/ability/?limit=20&offset=20";
     fetch(url, {});
