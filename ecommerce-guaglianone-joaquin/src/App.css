@@ -1,0 +1,34 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+li {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+img {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+ul {
+  border: 2px solid white;
+}
+
+.listaDeProd {
+
+    display: grid;
+    padding-left: 0px;
+    padding-right: 0px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 35px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
