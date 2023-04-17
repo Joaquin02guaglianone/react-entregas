@@ -11,6 +11,7 @@ export const Prod = (props) => {
                   <p>categoria: {props.categoria}</p>
                   <p>{props.nombre}</p>
                   <p>precio: ${props.precio}</p>
+                  <p>stock: {props.stock} unidades disponibles</p>
                   </li>
                   <li>
                     

@@ -50,7 +50,7 @@ datos.categoria.toLowerCase().includes(filtro.toLocaleLowerCase()))
       {resultados.map((prod) => {
         return (
           <div className="listaDeProd">
-            <Prod nombre={prod.nombre} img={prod.img} precio={prod.precio} categoria={prod.categoria}/>
+            <Prod nombre={prod.nombre} img={prod.img} precio={prod.precio} categoria={prod.categoria} stock={prod.stock}/>
             <ItemCount />
           </div>
         );
