@@ -1,9 +1,8 @@
-import { prodFetch } from "./prodFetch";
+import { prodFetch, producto } from "./prodFetch";
 import { useEffect, useState } from "react";
 import { Prod } from "./prod";
-import { ListGroupItem } from "react-bootstrap";
-import { ItemCount } from "./contador";
 import { Link, useParams } from 'react-router-dom';
+import { collection, doc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 export const Contenedor = () => {
   const [productos, setProductos] = useState([]);
@@ -13,11 +12,6 @@ export const Contenedor = () => {
   const [filtro, setFiltro] = useState("")
 
   // funciones
-
-const deta = () => {
-
-  
-}
 
   const searcher = (e) => {
     setFiltro (e.target.value)
@@ -34,41 +28,45 @@ datos.categoria.toLowerCase().includes(filtro.toLocaleLowerCase()))
 
   useEffect(() => {
 
-if (cid) {
+ if (cid) {
+
+  const db = getFirestore()
+const queryCollection = collection(db, 'productos')
+
+const queryFiltrado = query(queryCollection, where('categoria', '==', cid))
+
+getDocs(queryFiltrado)
+.then (resp => setProductos(resp.docs.map(producto => ({id: producto.id, ...producto.data()}))))
   
-  prodFetch()
-  .then((resp) => setProductos(resp.filter(prod => prod.categoria === cid)))
-  .catch((err) => console.log(err))
-  .finally(() => console.log("siempre a lo ultimo"));
+   prodFetch()
+   .then((resp) => setProductos(resp.filter(prod => prod.categoria === cid)))
+  .catch((err) => (err))
+  .finally(() => ("siempre a lo ultimo"));
 
+ } else {
 
-
-} else {
+  const db = getFirestore()
+  const queryCollection = collection(db, 'productos')
   
-  prodFetch()
-  .then((resp) => setProductos(resp))
-  .catch((err) => console.log(err))
-  .finally(() => console.log("siempre a lo ultimo"));
+  getDocs(queryCollection)
+  .then (resp => setProductos(resp.docs.map(producto => ({id: producto.id, ...producto.data()}))))
 
-
-}
+ }
 
   }, [cid]);
-
-  console.log(productos);
 
   return (
     <div className="row">
 
-<input value={filtro} onChange={searcher} type="text" placeholder="buscar por categoria"/>
+  <input className="CatFilter" value={filtro} onChange={searcher} type="text" placeholder="buscar por categoria"/>
 
       {resultados.map((prod) => {
         return ( 
+          <div key={prod.id} className="listaDeProd">
           <div>
-          <div className="listaDeProd">
-            <Prod nombre={prod.nombre} img={prod.img} precio={prod.precio} categoria={prod.categoria} stock={prod.stock} descripcion={prod.descripcion}/>         
+            <Prod  nombre={prod.nombre} img={prod.img} precio={prod.precio} categoria={prod.categoria} stock={prod.stock} descripcion={prod.descripcion}/> 
+            <Link to={`/detail/${prod.id}`}><button className="BotDet">Mostrar detalles</button></Link>        
           </div>
-          <Link to={`/detail/${prod.id}`}><button>Mostrar detalles</button></Link>
           </div>
         );
       })}

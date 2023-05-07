@@ -1,18 +1,18 @@
-import { useEffect } from 'react';
 import { useState } from 'react'
 
-export function ItemCount({initial = 0, max = 10, min = 0}) {
+
+export function ItemContador({initial = 1, max = 10, min = 1, porAgregar}) {
 if (initial<min || initial>max) initial = min  
-const [Contador, setContador] = useState(initial)
+const [contador, setContador] = useState(initial)
 
 const handleAcontador = () => {
-    if (Contador < max) 
-setContador(Contador + 1)
+    if (contador < max) 
+setContador(contador + 1)
 };
 
 const handleQcontador = () => {
-    if (Contador > min) 
-setContador(Contador - 1)
+    if (contador > min) 
+setContador(contador - 1)
     };
 
 const reset = () => {
@@ -22,10 +22,11 @@ const reset = () => {
     return (
 
 <div>
-    <h3>Cantidad: {Contador}</h3>
-    <button onClick={handleAcontador}>+</button>
-    <button onClick={handleQcontador}>-</button>
-    <button onClick={reset}>borrar</button>
+    <h3>Cantidad: {contador}</h3>
+    <button className='BotDet elimsum' onClick={handleAcontador}>+</button>
+    <button className='BotDet elimsum' onClick={handleQcontador}>-</button>
+    <button className='BotDet elimsum' onClick={reset}>borrar</button>
+    <button className='BotDet elimsum' onClick={()=>porAgregar(contador)}>Agregar al carrito</button>
 </div>
 
     )

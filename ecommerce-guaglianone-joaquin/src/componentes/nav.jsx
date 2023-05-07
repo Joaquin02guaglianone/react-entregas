@@ -9,12 +9,12 @@ export function Navb() {
   return(
     <Navbar>
     <Container className='navb'>
-      <Link  to={"/"} className='navb'>inicio</Link>
+      <Link  to={"/"} className='navb'><button className='Nav'>Inicio</button></Link>
       <Nav className="me-auto navb">
-        <Link to={"/categoria/remeras"} className='navb' href="#home">Prendas Superiores</Link>
-        <Link to={"/categoria/pantalones"} className='navb' href="#features">Prendas Inferiores</Link>
-        <Link to={"/categoria/calzado"} className='navb' href="#pricing">Calzados</Link>
-        <Link to={"/categoria/accesorios"} className='navb' href="#pricing">Accesorios</Link>
+        <Link to={"/categoria/remeras"} className='navb' href="#home"><button className='Nav'>Prendas Superiores</button></Link>
+        <Link to={"/categoria/pantalones"} className='navb' href="#features"><button className='Nav'>Prendas Inferiores</button></Link>
+        <Link to={"/categoria/calzado"} className='navb' href="#pricing"><button className='Nav'>Calzado</button></Link>
+        <Link to={"/categoria/accesorios"} className='navb' href="#pricing"><button className='Nav'>Accesorios</button></Link>
         <Cart/>
       </Nav>
     </Container>

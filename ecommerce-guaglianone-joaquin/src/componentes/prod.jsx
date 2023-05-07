@@ -1,25 +1,21 @@
 export const Prod = (props) => {
 
-
     return (
-        <div className="listaDeProd">
-            
+        <div className="padre">
+            <div className="hijo">
             <ul>
                 <li>
                   <img src={props.img}/>
                   </li>
                   <li>
-                  <p>categoria: {props.categoria}</p>
+                  <p>Categoria: {props.categoria}</p>
                   <p>{props.nombre}</p>
-                  <p>precio: ${props.precio}</p>
-                  <p>stock: {props.stock} unidades disponibles</p>
-                  <p>descripcion: {props.descripcion}</p>
-                  </li>
-                  <li>
-                    
+                  <p>Precio: ${props.precio}</p>
+                  <p>Stock: {props.stock} unidades disponibles</p>
+                  <p>Descripcion: {props.descripcion}</p>
                   </li>
             </ul>
-
+            </div>
         </div>
     )
 }
